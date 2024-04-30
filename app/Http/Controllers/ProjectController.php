@@ -16,9 +16,11 @@ class ProjectController extends Controller
     public function index()
     {
         $project = Project::all();
+        $categories = Category::all();
 
 
-        return view('admin.project.index', compact('project'));
+
+        return view('admin.project.index', compact('project', 'categories'));
     }
 
     /**
@@ -27,8 +29,10 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $project = Project::all();
 
-        return view('admin.project.create', compact('categories'));
+
+        return view('admin.project.create', compact('categories', 'project'));
     }
 
     /**

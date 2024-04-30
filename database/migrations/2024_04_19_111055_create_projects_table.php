@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('title')->unique();
             $table->text('description');
             $table->text('cover_image');
-            $table->string('tecnologies');
+            $table->string('tecnologies')->default('');
             $table->string('link');
             $table->timestamps();
         });
