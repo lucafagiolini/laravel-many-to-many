@@ -9,8 +9,8 @@
             <div class="card mb-3 bg-dark-subtle" style="max-width: 32rem;">
                 <div>
                     <div>
-                        <img src="{{ asset('storage/' . $project->cover_image) }}" class="img-top rounded-top" alt="..."
-                            style="max-width: 31rem;">
+                        <img src="{{ asset('storage/' . $project->cover_image) }}" class="img-top rounded-top"
+                            alt="{{ $project->title }} img " style="max-width: 31rem;">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body" style="width: 31rem;">
