@@ -51,23 +51,21 @@
                 @enderror
             </div>
 
-            {{-- tecnologies input --}}
-            <div class="mb-4">
-                <label for="tecnologies @error('tecnologies') is-invalid @enderror" class="form-label">Tecnologies</label>
-                <select class="form-select" id="tecnologies" name='tecnologies'>
-                    <option value="0">Laravel</option>
-                    <option value="1">Laravel - Vite</option>
-                    <option value="2">Vite</option>
-                    <option value="3">Vite - Vue</option>
-                    <option value="4">Vue - JavaScript</option>
-                    <option value="5">Html - CSS - JavaScript</option>
-                </select>
-                @error('tecnologies')
-                    <div class="invalid-feedback ">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+            {{-- tecnology input --}}
+            <ul class="list-group">
+                <li class="d-flex flex-wrap justify-content-center gap-5 list-group-item" for=''
+                    style='list-style-type: none;'>
+                    @foreach ($technology as $technology)
+                        <div>
+                            <label class="form-check-label text-capitalize" for="{{ $technology->title }}">
+                                {{ $technology->title }}
+                            </label>
+                            <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}"
+                                id="{{ $technology->title }}" name='tecnologies[]'>
+                        </div>
+                    @endforeach
+                </li>
+            </ul>
 
             {{-- Project url input --}}
             <div class="mb-4 pt-4">
@@ -87,7 +85,7 @@
                 <select class="form-select" id="category_id" name='category_id'>
 
 
-                    <option value="">Undefined</option>
+                    <option value=""></option>
 
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" {{ $category->id == old('category_id') ? 'selected' : '' }}>

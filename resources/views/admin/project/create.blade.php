@@ -48,23 +48,21 @@
                 @enderror
             </div>
 
-            {{-- tecnologies input --}}
-            <div class="mb-4">
-                <label for="tecnologies @error('tecnologies') is-invalid @enderror" class="form-label">Tecnologies</label>
-                <select class="form-select" id="tecnologies" name='tecnologies'>
-                    <option value="0">Laravel</option>
-                    <option value="1">Laravel - Vite</option>
-                    <option value="2">Vite</option>
-                    <option value="3">Vite - Vue</option>
-                    <option value="4">Vue - JavaScript</option>
-                    <option value="5">Html - CSS - JavaScript</option>
-                </select>
-                @error('tecnologies')
-                    <div class="invalid-feedback ">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
+            {{-- tecnology input --}}
+            <ul class="list-group">
+                <li class="d-flex flex-wrap gap-5 list-group-item" for='' style='list-style-type: none;'>
+                    @foreach ($technologies as $technology)
+                        <div>
+                            <label class="form-check-label text-uppercase" for="{{ $technology->title }}">
+                                {{ $technology->title }}
+                            </label>
+                            <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}"
+                                id="{{ $technology->title }}" name='technologies[]'
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        </div>
+                    @endforeach
+                </li>
+            </ul>
 
             {{-- Project url input --}}
             <div class="mb-4 pt-4">
@@ -83,7 +81,7 @@
                 <label for="category_id @error('category_id') is-invalid @enderror" class="form-label">Category</label>
                 <select class="form-select" id="category_id" name='category_id'>
 
-                    <option value="0">Undefined</option>
+                    <option value="0"></option>
 
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->title }}</option>

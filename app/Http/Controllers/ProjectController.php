@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Category;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -17,10 +18,11 @@ class ProjectController extends Controller
     {
         $project = Project::all();
         $categories = Category::all();
+        $technologies = Technology::all();
 
 
 
-        return view('admin.project.index', compact('project', 'categories'));
+        return view('admin.project.index', compact('project', 'categories', 'technologies'));
     }
 
     /**
@@ -30,9 +32,10 @@ class ProjectController extends Controller
     {
         $categories = Category::all();
         $project = Project::all();
+        $technologies = Technology::all();
 
 
-        return view('admin.project.create', compact('categories', 'project'));
+        return view('admin.project.create', compact('categories', 'project', 'technologies'));
     }
 
     /**
@@ -57,6 +60,9 @@ class ProjectController extends Controller
 
         $project->save();
 
+        $project->technologies()->attach($request->technologies);
+
+
         return redirect()->route('admin.project.index')->with('success', 'New Project created successfully');
     }
 
@@ -66,7 +72,8 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $categories = Category::all();
-        return view('admin.project.show', compact('project', 'categories'));
+        $technologies = Technology::all();
+        return view('admin.project.show', compact('project', 'categories', 'technologies'));
     }
 
     /**
@@ -75,7 +82,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $categories = Category::all();
-        return view('admin.project.edit', compact('project', 'categories'));
+        $project = Project::all();
+        $technologies = Technology::all();
+        return view('admin.project.edit', compact('project', 'categories', 'technologies'));
     }
 
     /**

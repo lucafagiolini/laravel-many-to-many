@@ -37,7 +37,7 @@
                                 <li class="list-group-item">
                                     <p class="card-text text-capitalize">
                                         <small class="text-body-secondary text-capitalize">
-                                            tecnologies: {{ $project->tecnologies }}
+                                            tecnologies:
                                         </small>
                                     </p>
                                 </li>
