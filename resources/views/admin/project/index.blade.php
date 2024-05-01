@@ -23,7 +23,12 @@
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->category->title }}</td>
-                        <td>{{ $project->technology }}
+                        <td>
+                            @foreach ($project->technologies as $technology)
+                                <span class="badge rounded-pill text-bg-primary">
+                                    {{ $technology->title }}
+                                </span>
+                            @endforeach
                         <td> {{ $project->description }}</td>
 
 

@@ -73,6 +73,7 @@ class ProjectController extends Controller
     {
         $categories = Category::all();
         $technologies = Technology::all();
+        // dd($project->technologies);
         return view('admin.project.show', compact('project', 'categories', 'technologies'));
     }
 

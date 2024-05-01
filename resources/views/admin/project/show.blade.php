@@ -38,9 +38,11 @@
                                     <p class="card-text text-capitalize">
                                         <small class="text-body-secondary text-capitalize">
                                             technologies:
-                                            {{-- @foreach ($project->$technologies as $technology)
-                                                {{ $technology->title }}
-                                            @endforeach --}}
+                                            @foreach ($project->technologies as $technology)
+                                                <span class="badge rounded-pill text-bg-primary">
+                                                    {{ $technology->title }}
+                                                </span>
+                                            @endforeach
                                         </small>
                                     </p>
                                 </li>
