@@ -48,7 +48,7 @@
                 @enderror
             </div>
 
-            {{-- tecnology input --}}
+            {{-- technology input --}}
             <ul class="list-group">
                 <li class="d-flex flex-wrap gap-5 list-group-item" for='' style='list-style-type: none;'>
                     @foreach ($technologies as $technology)

@@ -37,7 +37,10 @@
                                 <li class="list-group-item">
                                     <p class="card-text text-capitalize">
                                         <small class="text-body-secondary text-capitalize">
-                                            tecnologies:
+                                            technologies:
+                                            {{-- @foreach ($project->$technologies as $technology)
+                                                {{ $technology->title }}
+                                            @endforeach --}}
                                         </small>
                                     </p>
                                 </li>

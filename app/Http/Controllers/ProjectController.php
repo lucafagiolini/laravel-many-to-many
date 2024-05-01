@@ -93,6 +93,7 @@ class ProjectController extends Controller
     {
         $request->validated();
 
+
         $project->update($request->all());
 
         // check if the image is uploaded
@@ -103,7 +104,10 @@ class ProjectController extends Controller
             $project->cover_image = $path;
         }
 
+
         $project->save();
+
+        $project->technologies()->sync($request->technologies);
 
         return redirect()->route('admin.project.index')->with('success', 'Project updated successfully');
     }

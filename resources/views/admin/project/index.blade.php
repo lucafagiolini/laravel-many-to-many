@@ -11,7 +11,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Project Name</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Tecnology</th>
+                    <th scope="col">Technology</th>
                     <th scope="col">Description</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -23,7 +23,7 @@
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>
                         <td>{{ $project->category->title }}</td>
-                        <td>{{ $project->tecnology }}
+                        <td>{{ $project->technology }}
                         <td> {{ $project->description }}</td>
 
 

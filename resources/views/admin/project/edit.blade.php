@@ -51,17 +51,25 @@
                 @enderror
             </div>
 
-            {{-- tecnology input --}}
+            {{-- technology input --}}
             <ul class="list-group">
-                <li class="d-flex flex-wrap justify-content-center gap-5 list-group-item" for=''
-                    style='list-style-type: none;'>
-                    @foreach ($technology as $technology)
+                <li class="d-flex flex-wrap gap-5 list-group-item" for='' style='list-style-type: none;'>
+                    @foreach ($technologies as $technology)
                         <div>
-                            <label class="form-check-label text-capitalize" for="{{ $technology->title }}">
+                            <label class="form-check-label text-uppercase" for="{{ $technology->title }}">
                                 {{ $technology->title }}
                             </label>
-                            <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}"
-                                id="{{ $technology->title }}" name='tecnologies[]'>
+
+                            @if ($errors->any())
+                                <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}"
+                                    id="{{ $technology->title }}" name='technologies[]'
+                                    {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                            @else
+                                <input class="form-check-input me-1" type="checkbox" value="{{ $technology->id }}"
+                                    id="{{ $technology->title }}" name='technologies[]'
+                                    {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
+                            @endif
+
                         </div>
                     @endforeach
                 </li>
